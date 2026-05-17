@@ -10,17 +10,18 @@ resource "aws_db_subnet_group" "db_subnet_group" {
 }
 
 resource "aws_db_instance" "mysql" {
-  allocated_storage      = 20
-  engine                 = "mysql"
-  engine_version         = "8.0"
-  instance_class         = "db.t3.micro"
-  db_name                = "iacdb"
-  username               = var.db_username
-  password               = var.db_password
-  db_subnet_group_name   = aws_db_subnet_group.db_subnet_group.name
-  skip_final_snapshot    = true
-  publicly_accessible    = false
-  deletion_protection    = false
+  identifier           = "iac-mysql-db"
+  allocated_storage    = 20
+  engine               = "mysql"
+  engine_version       = "8.0"
+  instance_class       = "db.t3.micro"
+  db_name              = "iacdb"
+  username             = var.db_username
+  password             = var.db_password
+  db_subnet_group_name = aws_db_subnet_group.db_subnet_group.name
+  skip_final_snapshot  = true
+  publicly_accessible  = false
+  deletion_protection  = false
 
   tags = {
     Name        = "iac-mysql-db"
